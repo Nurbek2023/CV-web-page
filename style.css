@@ -9,12 +9,16 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-in-out forwards;
 }
 
 header {
@@ -22,17 +26,22 @@ header {
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    position: relative;
+    animation: slideInFromLeft 1s ease-out;
 }
 
 .profile-pic {
     width: 150px;
     border-radius: 50%;
     margin-bottom: 20px;
+    transform: scale(0);
+    animation: popIn 1s forwards 0.5s;
 }
 
 h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    animation: fadeIn 1s forwards 1s;
 }
 
 p {
@@ -48,6 +57,7 @@ h2 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
+    animation: fadeInUp 1s ease-in-out forwards;
 }
 
 ul {
@@ -56,31 +66,78 @@ ul {
 }
 
 ul li {
-    background: #eee;
+    background: #635757;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+ul li:hover {
+    transform: scale(1.05);
+    color: #f4f4f4;
 }
 
 button {
-    background-color: #333;
+    background-color: #332e2e;
     color: white;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #292020;
+    transform: translateY(-5px);
 }
 
 footer {
-    background: #333;
+    background: #131010;
     color: #fff;
     text-align: center;
     padding: 10px 0;
     position: relative;
     bottom: 0;
     width: 100%;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
